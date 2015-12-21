@@ -12,8 +12,8 @@ import IMAPClient
 DEBUG = True # Set DEBUG to False if you want nothing logged to the console.
 
 HOSTNAME = 'imap.gmail.com'
-USERNAME = 'whiskeythedev' # Your GMAIL username - leave out the @gmail.com portion.
-PASSWORD = 'c$1v1cW@s2' # Your GMAIL password - This is plain text. If someone can see this file, they can see your password.
+USERNAME = 'YOUR USERNAME' # Your GMAIL username - leave out the @gmail.com portion.
+PASSWORD = 'YOUR PASSWORD' # Your GMAIL password - This is plain text. If someone can see this file, they can see your password.
 MAILBOX = 'Inbox' # Which mailbox the job checks. By default leave it to Inbox, unless you want it to check another folder.
 
 NEWMAIL_OFFSET = 0   # Count in Inbox. If you leave unread in your inbox a lot, set this value to above 0.
