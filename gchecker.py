@@ -1,12 +1,11 @@
 #!/usr/bin/env python
 #This is intended to be used on a Raspberry Pi with the PiGlow hat
 #Code found on Adafruit.com @ https://learn.adafruit.com/raspberry-pi-e-mail-notifier-using-leds/overview
-#Requires PyGlow library: https://github.com/benleb/PyGlow
-#Requires feedparser library (sudo pip install feedparser)
+#Thank you for checking out my code! https://github.com/RobotRogue
 
 import PyGlow
 import time
-import feedparser
+import IMAPClient
 
 DEBUG = True # Set DEBUG to False if you want nothing logged to the console.
 
