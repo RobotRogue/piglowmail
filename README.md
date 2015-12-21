@@ -6,3 +6,6 @@ Email service library: https://pypi.python.org/pypi/IMAPClient
 PyGlow library, providing pulse capability: https://github.com/benleb/PyGlow
 If you use 2-factor auth for gmail: https://support.google.com/mail/answer/1173270?hl=en
 
+Line 1
+Line 2
+Line 3
