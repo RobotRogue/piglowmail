@@ -10,8 +10,8 @@ import IMAPClient
 DEBUG = True # Set DEBUG to False if you want nothing logged to the console.
 
 HOSTNAME = 'imap.gmail.com'
-USERNAME = 'your username here' # Your GMAIL username - leave out the @gmail.com portion.
-PASSWORD = 'your password here' # Your GMAIL password - This is plain text. If someone can see this file, they can see your password.
+USERNAME = raw_input('Enter your username: ') # Your GMAIL username - leave out the @gmail.com portion.
+PASSWORD = raw_input('Enter your password: ') # Your GMAIL password - This is plain text. If someone can see this file, they can see your password.
 MAILBOX = 'Inbox' # Which mailbox the job checks. By default leave it to Inbox, unless you want it to check another folder.
 
 NEWMAIL_OFFSET = 0   # Count in Inbox. If you leave unread in your inbox a lot, set this value to above 0.
@@ -38,9 +38,11 @@ def loop():
         print "You have", newmails, "new emails!"
 
     if newmails > NEWMAIL_OFFSET:
-        pyglow.color(6)
+        #pyglow.color(6)
+        print("This is where your PiGlow would start to blink.")
     else:
-        pyglow.all(0) #shuts off all LEDs
+        #pyglow.all(0) #shuts off all LEDs
+        print("Your PiGlow should not be blinking right now.")
 
     time.sleep(MAIL_CHECK_FREQ)
 
@@ -50,7 +52,8 @@ if __name__ == '__main__':
         while True:
             loop()
     finally:
-        pyglow.all(0) #Kills all LEDs if you Ctrl-C the program.
+        #pyglow.all(0) #Kills all LEDs if you Ctrl-C the program.
+        print("Here we'd shut off all LEDs.")
 
 
 # Notes:
