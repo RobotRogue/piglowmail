@@ -3,8 +3,8 @@
 #Code found on Adafruit.com @ https://learn.adafruit.com/raspberry-pi-e-mail-notifier-using-leds/overview
 #Thank you for checking out my code! https://github.com/RobotRogue
 
-import PyGlow
 import time
+import PyGlow
 import IMAPClient
 
 DEBUG = True # Set DEBUG to False if you want nothing logged to the console.
@@ -51,3 +51,11 @@ if __name__ == '__main__':
             loop()
     finally:
         pyglow.all(0) #Kills all LEDs if you Ctrl-C the program.
+
+
+# Notes:
+# Create a function that will prompt user to input username, and prompt to input password
+# Then have it store those as variables to pass to the check mail loop
+
+# May also just be able to write the whole thing in such a way where when the python file is executed,
+# user will have to pass in Username and Password as arguments (or parameters) at the top level.
