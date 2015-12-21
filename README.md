@@ -1,7 +1,7 @@
 # PiGlowMail
 <p><b>NOTE: Right now my master repo is a total mess, this is all very much a WIP. I plan to consolidate the whole thing into a single file when I'm done. For now, don't bother downloading this repo.</b></p>
 
-<p>Use your <b>PiGlow hat</b> to notify you that you have new mail!</p>
+<p>Use your <b><a href="https://shop.pimoroni.com/products/piglow" target="_blank">PiGlow hat</a></b> to notify you that you have new mail!</p>
 <p>This code will check your inbox for new mail, and if it finds a new message, it will cause the red LEDs on your PiGlow hat to pulse Red, until all new emails have been read.</p>
 <p>I used most of the code from Adafruit.com @ https://learn.adafruit.com/raspberry-pi-e-mail-notifier-using-leds/overview</p>
 
