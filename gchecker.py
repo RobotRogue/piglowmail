@@ -25,7 +25,8 @@ s = 1000
 pyglow = PyGlow(brightness=int(b), speed=int(s), pulse=True) #pulse_dir=BOTH might have to be pulse_dir="BOTH"... if errors are thrown.
 
 def pulseRed():
-    while True:
+    #while True:
+    for x in range(0,59): #better way to loop?
         pyglow.color(6)
 
 def loop():
@@ -50,7 +51,8 @@ def loop():
         pyglow.all(0) #shuts off all LEDs
         print('Your PiGlow should not be blinking right now.')
 
-    time.sleep(MAIL_CHECK_FREQ)
+    #time.sleep(MAIL_CHECK_FREQ)
+    #is time.sleep still needed since I used a for loop in the pulseRed function?
 
 if __name__ == '__main__':
     try:
@@ -63,4 +65,10 @@ if __name__ == '__main__':
 
 
 # Notes:
-# ...
+# Changed on 12/22/15 -- changed While loop to a For loop.
+# Changed on 12/22/15 -- commented out time.sleep(MAIL_CHECK_FREQ) because I am using a For loop in the pulseRed function.
+# The thought on the above changes is that the For loop will pulse the PiGlow 60 times @ 1000ms/pulse, which would make that 60 seconds.
+# The earlier incarnation has "MAIL_CHECK_FREQ" set to 60 seconds... so by removing that time.sleep, and replacing it with the For loop...
+# That should effectively do the same thing. Reason for doing this is because I used a While loop in the pulseRed function which locked
+# The whole damn thing into an infinite loop, so the program only checked mail once and never again.
+# Needs testing -- if it passes, I'll clean up the code.
