@@ -55,7 +55,7 @@ if __name__ == '__main__':
             loop()
     finally:
         #pyglow.all(0) #Kills all LEDs if you Ctrl-C the program.
-        print('Here we'd shut off all LEDs.')
+        print('Here we shut off all LEDs.')
 
 
 # Notes:
