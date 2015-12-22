@@ -8,6 +8,6 @@
 <p>Requires some libraries to work</p>
 <ul>
 <li>IMAPClient library: For the checking for new mail -  https://pypi.python.org/pypi/IMAPClient</li>
-<li>PyGlow library: For providing pulse capability - https://github.com/benleb/PyGlow</li>
+<li>PyGlow library: https://github.com/benleb/PyGlow</li>
 <li>If you use 2-factor auth for gmail: https://support.google.com/mail/answer/1173270?hl=en</li>
 </ul>
