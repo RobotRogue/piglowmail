@@ -7,12 +7,13 @@
 import time
 import PyGlow
 import IMAPClient
+import getpass #Info on getpass here: https://docs.python.org/2/library/getpass.html
 
 DEBUG = True # Set DEBUG to False if you want nothing logged to the console.
 
 HOSTNAME = 'imap.gmail.com'
 USERNAME = raw_input('Enter your username: ') # Your GMAIL username - leave out the @gmail.com portion.
-PASSWORD = raw_input('Enter your password: ') # Your GMAIL password - This is plain text. If someone can see this file, they can see your password.
+PASSWORD = getpass.getpass('Enter your password: ') # Your GMAIL password - This is plain text. If someone can see this file, they can see your password.
 MAILBOX = 'Inbox' # Which mailbox the job checks. By default leave it to Inbox, unless you want it to check another folder.
 
 NEWMAIL_OFFSET = 0   # Count in Inbox. If you leave unread in your inbox a lot, set this value to above 0.
