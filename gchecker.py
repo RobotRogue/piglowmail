@@ -1,6 +1,7 @@
 #!/usr/bin/env python
-#This is intended to be used on a Raspberry Pi with the PiGlow hat
-#Code found on Adafruit.com @ https://learn.adafruit.com/raspberry-pi-e-mail-notifier-using-leds/overview
+
+#Original code found on Adafruit.com @ https://learn.adafruit.com/raspberry-pi-e-mail-notifier-using-leds/overview
+#Feel free to hard-code your username and password instead of using raw_input
 #Thank you for checking out my code! https://github.com/RobotRogue
 
 import time
@@ -39,10 +40,10 @@ def loop():
 
     if newmails > NEWMAIL_OFFSET:
         #pyglow.color(6)
-        print("This is where your PiGlow would start to blink.")
+        print('This is where your PiGlow would start to blink.')
     else:
         #pyglow.all(0) #shuts off all LEDs
-        print("Your PiGlow should not be blinking right now.")
+        print('Your PiGlow should not be blinking right now.')
 
     time.sleep(MAIL_CHECK_FREQ)
 
@@ -53,12 +54,8 @@ if __name__ == '__main__':
             loop()
     finally:
         #pyglow.all(0) #Kills all LEDs if you Ctrl-C the program.
-        print("Here we'd shut off all LEDs.")
+        print('Here we'd shut off all LEDs.')
 
 
 # Notes:
-# Create a function that will prompt user to input username, and prompt to input password
-# Then have it store those as variables to pass to the check mail loop
-
-# May also just be able to write the whole thing in such a way where when the python file is executed,
-# user will have to pass in Username and Password as arguments (or parameters) at the top level.
+# ...
