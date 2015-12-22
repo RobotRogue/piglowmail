@@ -1,26 +1,27 @@
 #!/usr/bin/env python
 #Code found on Adafruit.com @ https://learn.adafruit.com/raspberry-pi-e-mail-notifier-using-leds/overview
-#Requires PyGlow library: https://github.com/benleb/PyGlow
-#Requires IMAPClient library (not sure if separate install required)
 
 from imapclient import IMAPClient
-from PyGlow import PyGlow
 import time
 
-DEBUG = True # Set DEBUG to False if you want nothing logged to the console.
+import RPi.GPIO as GPIO
+
+DEBUG = True
 
 HOSTNAME = 'imap.gmail.com'
-USERNAME = 'your username here' # Your GMAIL username - leave out the @gmail.com portion.
-PASSWORD = 'your password here' # Your GMAIL password - This is plain text. If someone can see this file, they can see your password.
-MAILBOX = 'Inbox' # Which mailbox the job checks. By default leave it to Inbox, unless you want it to check another folder.
+USERNAME = 'your username here'
+PASSWORD = 'your password here'
+MAILBOX = 'Inbox'
 
-NEWMAIL_OFFSET = 0   # Count in Inbox. If you leave unread in your inbox a lot, set this value to above 0.
-MAIL_CHECK_FREQ = 60 # This value is in seconds
+NEWMAIL_OFFSET = 1   # my unread messages never goes to zero, yours might
+MAIL_CHECK_FREQ = 60 # check mail every 60 seconds
 
-# PyGlow Global Variables:
-b = 128
-s = 1000
-pyglow = PyGlow(brightness=int(b), speed=int(s), pulse=True, pulse_dir=BOTH) #pulse_dir=BOTH might have to be pulse_dir="BOTH"... if errors are thrown.
+GPIO.setwarnings(False)
+GPIO.setmode(GPIO.BCM)
+GREEN_LED = 18
+RED_LED = 23
+GPIO.setup(GREEN_LED, GPIO.OUT)
+GPIO.setup(RED_LED, GPIO.OUT)
 
 def loop():
     server = IMAPClient(HOSTNAME, use_uid=True, ssl=True)
@@ -38,9 +39,11 @@ def loop():
         print "You have", newmails, "new emails!"
 
     if newmails > NEWMAIL_OFFSET:
-        pyglow.color(6)
+        GPIO.output(GREEN_LED, True)
+        GPIO.output(RED_LED, False)
     else:
-        pyglow.all(0) #shuts off all LEDs
+        GPIO.output(GREEN_LED, False)
+        GPIO.output(RED_LED, True)
 
     time.sleep(MAIL_CHECK_FREQ)
 
@@ -50,18 +53,4 @@ if __name__ == '__main__':
         while True:
             loop()
     finally:
-        pyglow.all(0) #Kills all LEDs if you Ctrl-C the program.
-
-
-#The PyGlow() object can accept four optional parameters:
-
-# brightness=None - sets default brightness level (value: number from 0 and 255)
-# speed=None - sets default pulsing speed in milliseconds (value: number > 0)
-# pulse=None - enables pulsing by default (value: True or False)
-# pulse_dir=None - sets default pulsation direction (value: UP, DOWN, BOTH)
-
-#In order to be able to use PyGlow module, the PyGlow() class must be imported:
-#from PyGlow import PyGlow
-
-#Then it's possible to instantiate the PyGlow() object:
-#pyglow = PyGlow()
+        GPIO.cleanup()
