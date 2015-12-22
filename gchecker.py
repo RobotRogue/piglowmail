@@ -5,8 +5,8 @@
 #Thank you for checking out my code! https://github.com/RobotRogue
 
 import time
-import PyGlow
-import IMAPClient
+from PyGlow import PyGlow
+from imapclient import IMAPClient
 import getpass #Info on getpass here: https://docs.python.org/2/library/getpass.html
 
 DEBUG = True # Set DEBUG to False if you want nothing logged to the console.
@@ -22,7 +22,7 @@ MAIL_CHECK_FREQ = 60 # This value is in seconds
 # PyGlow Global Variables:
 b = 128
 s = 1000
-pyglow = PyGlow(brightness=int(b), speed=int(s), pulse=True, pulse_dir=BOTH) #pulse_dir=BOTH might have to be pulse_dir="BOTH"... if errors are thrown.
+pyglow = PyGlow(brightness=int(b), speed=int(s), pulse=True) #pulse_dir=BOTH might have to be pulse_dir="BOTH"... if errors are thrown.
 
 def loop():
     server = IMAPClient(HOSTNAME, use_uid=True, ssl=True)
@@ -40,10 +40,10 @@ def loop():
         print "You have", newmails, "new emails!"
 
     if newmails > NEWMAIL_OFFSET:
-        #pyglow.color(6)
+        pyglow.color(6)
         print('This is where your PiGlow would start to blink.')
     else:
-        #pyglow.all(0) #shuts off all LEDs
+        pyglow.all(0) #shuts off all LEDs
         print('Your PiGlow should not be blinking right now.')
 
     time.sleep(MAIL_CHECK_FREQ)
@@ -54,7 +54,7 @@ if __name__ == '__main__':
         while True:
             loop()
     finally:
-        #pyglow.all(0) #Kills all LEDs if you Ctrl-C the program.
+        pyglow.all(0) #Kills all LEDs if you Ctrl-C the program.
         print('Here we shut off all LEDs.')
 
 
