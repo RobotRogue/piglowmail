@@ -24,6 +24,10 @@ b = 128
 s = 1000
 pyglow = PyGlow(brightness=int(b), speed=int(s), pulse=True) #pulse_dir=BOTH might have to be pulse_dir="BOTH"... if errors are thrown.
 
+def pulseRed():
+    while True:
+        pyglow.color(6)
+
 def loop():
     server = IMAPClient(HOSTNAME, use_uid=True, ssl=True)
     server.login(USERNAME, PASSWORD)
@@ -40,8 +44,8 @@ def loop():
         print "You have", newmails, "new emails!"
 
     if newmails > NEWMAIL_OFFSET:
-        pyglow.color(6)
-        print('This is where your PiGlow would start to blink.')
+        pulseRed()
+        print('This is where your PiGlow would start to pulse red.')
     else:
         pyglow.all(0) #shuts off all LEDs
         print('Your PiGlow should not be blinking right now.')
