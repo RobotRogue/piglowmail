@@ -7,7 +7,7 @@
 
 <p>Requires some libraries to work</p>
 <ul>
-<li>IMAPClient library: https://pypi.python.org/pypi/IMAPClient</li>
+<li>IMAPClient library: https://pypi.python.org/pypi/IMAPClient/0.9.1</li>
 <li>PyGlow library: https://github.com/benleb/PyGlow</li>
 </ul>
 
