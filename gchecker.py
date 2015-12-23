@@ -9,7 +9,7 @@ from PyGlow import PyGlow
 from imapclient import IMAPClient
 import getpass #Info on getpass here: https://docs.python.org/2/library/getpass.html
 
-DEBUG = True # Set DEBUG to False if you want nothing logged to the console.
+DEBUG = False # Set DEBUG to True for verbose/troubleshooting mode.
 
 HOSTNAME = 'imap.gmail.com'
 USERNAME = raw_input('Enter your username: ') # Your GMAIL username - leave out the @gmail.com portion.
@@ -25,8 +25,7 @@ s = 1000
 pyglow = PyGlow(brightness=int(b), speed=int(s), pulse=True) #pulse_dir=BOTH might have to be pulse_dir="BOTH"... if errors are thrown.
 
 def pulseRed():
-    #while True:
-    for x in range(0,59): #better way to loop?
+    for x in range(0,59):
         pyglow.color(6)
 
 def loop():
@@ -58,10 +57,5 @@ if __name__ == '__main__':
         while True:
             loop()
     finally:
-        pyglow.all(0) #Kills all LEDs if you Ctrl-C the program.
+        pyglow.all(0)
         print('Here we shut off all LEDs.')
-
-# Notes:
-# Changed on 12/22/15 -- 
-# Fixed issue with it repeating the loop too fast when there are no new emails. 
-# Added time.sleep to else: in the loop function.
