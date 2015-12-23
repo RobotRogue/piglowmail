@@ -17,7 +17,7 @@ PASSWORD = getpass.getpass('Enter your password: ') # Your GMAIL password - This
 MAILBOX = 'Inbox' # Which mailbox the job checks. By default leave it to Inbox, unless you want it to check another folder.
 
 NEWMAIL_OFFSET = 0   # Count in Inbox. If you leave unread in your inbox a lot, set this value to above 0.
-MAIL_CHECK_FREQ = 60 # This value is in seconds
+NO_MAIL_PAUSE = 60 # This value is in seconds
 
 # PyGlow Global Variables:
 b = 128
@@ -50,9 +50,7 @@ def loop():
     else:
         pyglow.all(0) #shuts off all LEDs
         print('Your PiGlow should not be blinking right now.')
-
-    #time.sleep(MAIL_CHECK_FREQ)
-    #is time.sleep still needed since I used a for loop in the pulseRed function?
+        time.sleep(NO_MAIL_PAUSE)
 
 if __name__ == '__main__':
     try:
@@ -63,12 +61,7 @@ if __name__ == '__main__':
         pyglow.all(0) #Kills all LEDs if you Ctrl-C the program.
         print('Here we shut off all LEDs.')
 
-
 # Notes:
-# Changed on 12/22/15 -- changed While loop to a For loop.
-# Changed on 12/22/15 -- commented out time.sleep(MAIL_CHECK_FREQ) because I am using a For loop in the pulseRed function.
-# The thought on the above changes is that the For loop will pulse the PiGlow 60 times @ 1000ms/pulse, which would make that 60 seconds.
-# The earlier incarnation has "MAIL_CHECK_FREQ" set to 60 seconds... so by removing that time.sleep, and replacing it with the For loop...
-# That should effectively do the same thing. Reason for doing this is because I used a While loop in the pulseRed function which locked
-# The whole damn thing into an infinite loop, so the program only checked mail once and never again.
-# Needs testing -- if it passes, I'll clean up the code.
+# Changed on 12/22/15 -- 
+# Fixed issue with it repeating the loop too fast when there are no new emails. 
+# Added time.sleep to else: in the loop function.
