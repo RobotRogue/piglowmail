@@ -48,7 +48,6 @@ def loop():
         print('This is where your PiGlow would start to pulse red.')
     else:
         pyglow.all(0) #shuts off all LEDs
-        print('Your PiGlow should not be blinking right now.')
         time.sleep(NO_MAIL_PAUSE)
 
 if __name__ == '__main__':
