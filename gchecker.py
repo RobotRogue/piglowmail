@@ -17,7 +17,7 @@ PASSWORD = getpass.getpass('Enter your password: ') # Your GMAIL password - This
 MAILBOX = 'Inbox' # Which mailbox the job checks. By default leave it to Inbox, unless you want it to check another folder.
 
 NEWMAIL_OFFSET = 0   # Count in Inbox. If you leave unread in your inbox a lot, set this value to above 0.
-NO_MAIL_PAUSE = 60 # This value is in seconds
+NO_NEW_MAIL_PAUSE = 60 # This value is in seconds
 
 # PyGlow Global Variables:
 b = 128
@@ -48,7 +48,7 @@ def loop():
         print('This is where your PiGlow would start to pulse red.')
     else:
         pyglow.all(0) #shuts off all LEDs
-        time.sleep(NO_MAIL_PAUSE)
+        time.sleep(NO_NEW_MAIL_PAUSE)
 
 if __name__ == '__main__':
     try:
